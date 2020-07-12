@@ -1,44 +1,142 @@
-$prefix-logo-color: blue;
+/*Might be a miss use of variables but makes things easier to find*/
+$prefix-logo-color: #40798c;
 $suffix-logo-color: brown;
-body {
-  font-family: 'Raleway', sans-serif;
+$body-text-color: #103c4b;
+$logo-font-size: 2.5rem;
+$primary-btn-bg-color: #40798c;
+$primary-btn-hover-bg-color: #7091ab;
+$body-text-vertical-spacing: 150%;
+
+$table-element-padding: 1.3rem;
+/*add some margin between cards  on small devices*/
+@media only screen and (max-width: 600px,) {
+  .card-box {
+    margin-top: 1.5rem;
+  }
+}
+%table-base {
+  border: thin solid;
+}
+%table-green-sheen-header {
+  th {
+    padding: $table-element-padding;
+    text-align: center;
+    background-color: #70a9a1;
+  }
+}
+%table-teal-blue-header {
+  th {
+    padding: $table-element-padding;
+    text-align: center;
+    background-color: #40798c;
+  }
 }
 
-h1,
-h2,
-h3 {
-  margin-bottom: 1.3rem;
-  font-weight: bold;
+%table-row-even-ashgray {
+  tr:nth-child(even) {
+    background: #b2beb5;
+    border: thin solid;
+  }
 }
+%table-row-even-beige {
+  tr:nth-child(even) {
+    background: #f6f1d1;
+    border: thin solid;
+  }
+}
+%default-table-data-style {
+  td {
+    padding: $table-element-padding;
+  }
+}
+%type-one-table {
+  @extend %table-base;
+  @extend %table-teal-blue-header;
+  @extend %table-row-even-ashgray;
+  @extend %default-table-data-style;
+}
+
+%type-two-table {
+  @extend %table-base;
+  @extend %table-green-sheen-header;
+  @extend %table-row-even-beige;
+  @extend %default-table-data-style;
+}
+
+table.table-type-1 {
+  @extend %type-one-table;
+}
+table.table-type-2 {
+  @extend %type-two-table;
+}
+table {
+  margin-top: 1.3rem;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+
+  color: $body-text-color;
+}
+
+/*contrived usage of nesting*/
+div.recipe-container {
+  h1 {
+    text-align: center;
+    margin-bottom: 1.3rem;
+    font-weight: bold;
+  }
+  h2,
+  h3 {
+    margin-bottom: 1.3rem;
+    font-weight: normal;
+    font-style: italic;
+  }
+}
+div.ingredients {
+  ul {
+    li.list-group-item {
+      font-weight: 300;
+    }
+  }
+}
+.btn-primary {
+  background-color: $primary-btn-bg-color;
+}
+.btn-primary:hover {
+  background-color: $primary-btn-hover-bg-color;
+}
+
 .card-img-top {
   width: 100%;
   height: 20vw;
   object-fit: cover;
 }
+
 .prefix-logo {
   font-family: 'Galada', cursive;
-  font-size: 2.5rem;
+  font-size: $logo-font-size;
   color: $prefix-logo-color;
 }
+
 .suffix-logo {
   font-family: 'Roboto', sans-serif;
-  font-size: 2.5rem;
+  font-size: $logo-font-size;
   color: $suffix-logo-color;
 }
+
 .content-container {
   margin-top: 1.5rem;
-  color: #0b2027;
-  color: red;
 }
 
 .ingredients {
   margin-top: 1.2rem;
   font-size: 24px;
 }
+
 .instructions {
   margin-top: 1.2rem;
   padding-top: 1.3rem;
-  line-height: 150%;
+  line-height: $body-text-vertical-spacing;
   font-weight: 100;
   font-size: 24px;
 }
@@ -51,8 +149,11 @@ footer {
   font-style: italic;
   padding-top: 1.2rem;
 }
+
 /*
 .embed-responsive .card-img-top {
   object-fit: cover;
 }
 */
+
+/*# sourceMappingURL=main.css.map */
